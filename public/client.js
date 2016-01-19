@@ -16,7 +16,7 @@ var statusMessage = document.getElementById('status-message');
 
 // Create Listener
 socket.on('statusMessage', function(message) {
-  statusMessage.innerText = message + 'from' + socket.id;
+  statusMessage.innerText = message;
 });
 
 // Event Listener for Options
@@ -47,8 +47,13 @@ socket.on('voteCount', function(votes) {
   };
 
   voteTotals.innerHTML = votesToShow;
+});
 
+// Take new Question
+var showNewQuestion = document.getElementById('poll-question');
 
+socket.on('pollQuestion', function(message) {
+  showNewQuestion.innerText = message;
 });
 
 

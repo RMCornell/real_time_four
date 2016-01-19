@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>JUST DO IT!</title>
+  <link href="custom.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 
@@ -12,17 +13,23 @@
 <h3>YOUR STATUS</h3>
 <div id="status-message"></div>
 
-<h3>WHAT DO YOU WANT TO DO</h3>
+<!--<div id="question">New Question</div>-->
+
+<div id="poll-question"></div>
+
+
 <div id="options">
-  <button>A</button>
-  <button>B</button>
-  <button>C</button>
+  <button>A</button><br>
+  <button>B</button><br>
+  <button>C</button><br>
   <button>D</button>
 </div>
 
 <div id="vote-count"></div>
 
 <!--JS Scripts-->
+<script src="/jquery.js"></script>
+<script>$('#poll-question').load('newpoll.html');</script>
 <script src="/socket.io/socket.io.js"></script>
 <script src="/client.js"></script>
 </body>

@@ -19,10 +19,6 @@ app.get('/poll/new', function(req, res) {
   res.sendFile(__dirname + '/public/newpoll.html');
 });
 
-app.get('/poll/:id', function(req, res) {
-  res.sendFile(__dirname + '/public/poll');
-});
-
 // Create Server Running Process
 const port = process.env.PORT || 3000;
 
@@ -49,6 +45,20 @@ io.on('connection', function(socket) {
 
 
 
+
+  // Get Poll Question
+  socket.on('message', function(channel, message) {
+    if(channel === 'newQuestion') {
+      io.sockets.emit('pollQuestion', message)
+    }
+  });
+
+
+
+
+
+  // Emit question to all users
+  //io.sockets.emit('pollQuestion', "poll Question");
 
   // Emit message for vote Cast and Vote Count
   socket.on('message', function (channel, message) {
