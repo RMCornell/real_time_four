@@ -35,6 +35,14 @@ io.on('connection', function(socket) {
   // Emit message to individual client on connection
   socket.emit('statusMessage', 'Connected');
 
+  // Emit message re: voteCounts
+  socket.on('message', function(channel, message) {
+    if(channel === 'voteCast') {
+      votes[socket.id] = message;
+      socket.emit('voteCount', countVotes(votes));
+    }
+  });
+
   socket.on('disconnect', function() {
     console.log('User has disconnected', io.engine.clientsCount + ' currently connected.');
     // Emmit connection count to all users on disconnection
@@ -44,11 +52,41 @@ io.on('connection', function(socket) {
   // Poll listener
   socket.on('message', function(channel, message) {
     console.log(channel, message)
-  })
+  });
 
+  // Poll Counter
+  var votes = {};
+
+  // Count Votes with socket.id as the key and message as value
+  socket.on('message', function(channel, message) {
+    if(channel === 'voteCast') {
+      votes[socket.id] = message;
+      console.log(votes)
+    }
+  });
+
+  // Remove Users votes when they disconnect
+  socket.on('disconnect', function() {
+    console.log('User has Disconnected.', io.engine.clientsCount + ' currently connected');
+    delete votes[socket.id];
+    console.log(votes);
+    io.sockets.emit('usersConnected', io.engine.clientsCount);
+  })
 });
 
-// User Disconnection Event Listener
+// Counting Votes Function
+function countVotes(votes) {
+  var voteCount = {
+    'Option A': 0,
+    'Option B': 0,
+    'Option C': 0,
+    'Option D': 0
+  };
+  for (vote in votes) {
+    voteCount[votes[vote]]++
+  }
+  return voteCount;
+}
 
 
 

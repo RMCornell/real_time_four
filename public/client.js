@@ -31,5 +31,15 @@ for(var i = 0; i < buttons.length; i++) {
   });
 }
 
+// Event Listener for Vote Results
+// Get Element Vote Results will be passed to
+var voteTotals = document.getElementById('vote-count')
+
+socket.on('voteCount', function(votes) {
+  voteTotals.innerText = votes;
+
+
+});
+
 
 
