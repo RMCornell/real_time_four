@@ -14,6 +14,15 @@ app.get('/', function (req, res){
   res.sendFile(__dirname + '/public/index.html');
 });
 
+// Create new Poll
+app.get('/poll/new', function(req, res) {
+  res.sendFile(__dirname + '/public/newpoll.html');
+});
+
+app.get('/poll/:id', function(req, res) {
+  res.sendFile(__dirname + '/public/poll');
+});
+
 // Create Server Running Process
 const port = process.env.PORT || 3000;
 
@@ -37,6 +46,9 @@ io.on('connection', function(socket) {
 
   // Emit message to individual client on connection
   socket.emit('statusMessage', 'Connected');
+
+
+
 
   // Emit message for vote Cast and Vote Count
   socket.on('message', function (channel, message) {
