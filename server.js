@@ -48,19 +48,12 @@ io.on('connection', function(socket) {
   // Emit message to individual client on connection
   socket.emit('statusMessage', 'Connected');
 
-
-
-
   // Get Poll Question
-  socket.on('message', function(channel, message) {
-    if(channel === 'newQuestion') {
-      io.sockets.emit('pollQuestion', message)
-    }
-  });
-
-
-
-
+  //socket.on('message', function(channel, message) {
+  //  if(channel === 'newQuestion') {
+  //    io.sockets.emit('pollQuestion', message)
+  //  }
+  //});
 
   // Emit question to all users
   //io.sockets.emit('pollQuestion', "poll Question");

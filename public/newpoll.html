@@ -5,41 +5,81 @@
   <link href="custom.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-<h3>Enter A New Question</h3>
-<form onsubmit="pollSubmit()">
-  New Question <input name='question' type="text" placeholder="new question"><br>
-  Answer One <input name="answer-a" type="text" placeholder="new question"><br>
-  Answer Two <input name="answer-b" type="text" placeholder="new question"><br>
-  Answer Three <input name="answer-c" type="text" placeholder="new question"><br>
-  Answer Four <input name="answer-d" type="text" placeholder="new question"><br>
-  <input type="submit" value="Submit form">
-</form>
-<div id="question" style="display: none"><p>Can you believe I started writing this at 9:00 this morning?</p></div>
-<div id="answer-a" style="display: none"><p>Are you high?</p></div>
-<div id="answer-b" style="display: none"><p>Yeah it's obvious</p></div>
-<div id="answer-c" style="display: none"><p>Really, looks like you spent weeks on it</p></div>
-<div id="answer-d" style="display: none"><p>No Shit Sherlock</p></div>
 
+  <!--Enter new question form-->
+  <h3>Enter A New Question</h3>
+  <form onsubmit="pollSubmit()">
+    <p>New Question: <input type="text" id="enter-question" value=""><button id="btnQuestion">Set Question</button></p>
 
-<form method="get" action="/">
-  <button type="submit">Goto Poll</button>
-</form>
+    <p>Answer A: <input type="text" id="enter-answer-a" value=""><button id="btnAnswerA">Set Answer A</button></p>
 
+    <p>Answer B: <input type="text" id="enter-answer-b" value=""><button id="btnAnswerB">Set Answer B</button></p>
 
+    <p>Answer C: <input type="text" id="enter-answer-c" value=""><button id="btnAnswerC">Set Answer C</button></p>
 
+    <p>Answer D: <input type="text" id="enter-answer-d" value=""><button id="btnAnswerD">Set Answer D</button></p>
+  </form>
 
+  <!--Staging for move to index-->
+  <div id="question" style="display: none"><p>Can you belive I started writing this at 9:00 this morning?</p></div>
+  <div id="answer-a" style="display: none"><p>Are you high?</p></div>
+  <div id="answer-b" style="display: none"><p>Yeah it's obvious</p></div>
+  <div id="answer-c" style="display: none"><p>Really, looks like you spent weeks on it</p></div>
+  <div id="answer-d" style="display: none"><p>No Shit Sherlock</p></div>
+
+  <!--Return to poll-->
+  <form method="get" action="/">
+    <button type="submit">Goto Poll</button>
+  </form>
 
 <!--JS Scripts-->
 <script src="/jquery.js"></script>
 
-<script>
-  function pollSubmit() {
-    var question = document.getElementById('question p').innerText;
+  <script>
+    $(document).ready(function(){
+//      Question Button
+      var questionOne = document.getElementById('#enter-question').valueOf();
+      $("#btnQuestion").submit(function(){
+        $("#question").text(questionOne);
+      });
+
+//      Answer A Button
+      var answerOne = document.getElementById('#enter-answer-a').val();
+      $("#btnAnswerA").click(function(){
+        $("#answer-a").html(answerOne);
+      });
+
+//      Answer B Button
+      var answerTwo = document.getElementById('#enter-answer-b').val();
+      $("#btnAnswerB").click(function(){
+        $("#answer-b").val(answerTwo);
+      });
+
+      //      Answer C Button
+      var answerThree = document.getElementById('#enter-answer-c').val();
+      $("#btnAnswerC").click(function(){
+        $("#answer-c").val(answerThree);
+      });
+
+      //      Answer D Button
+      var answerFour = document.getElementById('#enter-answer-d').val();
+      $("#btnAnswerD").click(function(){
+        $("#answer-d").val(answerFour);
+      });
+    });
+  </script>
 
 
-    $("a").html($("a").html().replace("Some text", "Other text"));
-  }
-</script>
+
+
+<!--<script>-->
+  <!--function pollSubmit() {-->
+    <!--var question = document.getElementById('question p').innerText;-->
+
+
+    <!--$("a").html($("a").html().replace("Some text", "Other text"));-->
+  <!--}-->
+<!--</script>-->
 
 
 <script src="/socket.io/socket.io.js"></script>
