@@ -16,7 +16,7 @@ var statusMessage = document.getElementById('status-message');
 
 // Create Listener
 socket.on('statusMessage', function(message) {
-  statusMessage.innerText = message;
+  statusMessage.innerText = message + 'from' + socket.id;
 });
 
 // Event Listener for Options
@@ -31,12 +31,22 @@ for(var i = 0; i < buttons.length; i++) {
   });
 }
 
+// Vote Casting
+socket.on('voteCast', function(message){
+  statusMessage.innerText = message;
+});
+
 // Event Listener for Vote Results
 // Get Element Vote Results will be passed to
-var voteTotals = document.getElementById('vote-count')
+var voteTotals = document.getElementById('vote-count');
 
 socket.on('voteCount', function(votes) {
-  voteTotals.innerText = votes;
+  var votesToShow = "Vote Totals";
+  for (var vote in votes) {
+    votesToShow = votesToShow + '<p>' + vote + ': ' + votes[vote] + '</p>';
+  };
+
+  voteTotals.innerHTML = votesToShow;
 
 
 });
