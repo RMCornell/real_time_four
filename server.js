@@ -19,6 +19,11 @@ app.get('/new', function(req, res) {
   res.sendFile(__dirname + '/public/newpoll.html');
 });
 
+// Admin Page
+app.get('/admin', function(req, res) {
+  res.sendfile(__dirname + '/public/admin.html');
+});
+
 // Create Server Running Process
 const port = process.env.PORT || 3000;
 
