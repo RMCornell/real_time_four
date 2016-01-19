@@ -1,0 +1,31 @@
+{
+  "name": "real_time_four",
+  "version": "1.0.0",
+  "description": "Real Time Applicaton Tutorial",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RMCornell/real_time_four.git"
+  },
+  "keywords": [
+    "Real",
+    "Time",
+    "Socket",
+    "IO"
+  ],
+  "author": "Robert M. Cornell",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RMCornell/real_time_four/issues"
+  },
+  "homepage": "https://github.com/RMCornell/real_time_four#readme",
+  "dependencies": {
+    "express": "^4.13.3",
+    "lodash": "^4.0.0",
+    "socket.io": "^1.4.4"
+  }
+}
