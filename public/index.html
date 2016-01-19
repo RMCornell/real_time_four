@@ -7,29 +7,39 @@
 <body>
 
 <!--Display connection count-->
-<h3>DOERS CONNECTED!</h3>
+<h3>Other People JUST DOING IT!</h3>
 <div id="connection-count"></div>
 
 <h3>YOUR STATUS</h3>
 <div id="status-message"></div>
 
-<!--<div id="question">New Question</div>-->
-
 <div id="poll-question"></div>
 
 
 <div id="options">
+  <div id="answer-a"></div>
   <button>A</button><br>
+  <div id="answer-b"></div>
   <button>B</button><br>
+  <div id="answer-c"></div>
   <button>C</button><br>
+  <div id="answer-d"></div>
   <button>D</button>
 </div>
 
 <div id="vote-count"></div>
 
+<form method="get" action="/new">
+  <button type="submit">New Question</button>
+</form>
+
 <!--JS Scripts-->
 <script src="/jquery.js"></script>
-<script>$('#poll-question').load('newpoll.html');</script>
+<script>$('#poll-question').load("newpoll.html #question p");</script>
+<script>$('#answer-a').load("newpoll.html #answer-a p");</script>
+<script>$('#answer-b').load("newpoll.html #answer-b p");</script>
+<script>$('#answer-c').load("newpoll.html #answer-c p");</script>
+<script>$('#answer-d').load("newpoll.html #answer-d p");</script>
 <script src="/socket.io/socket.io.js"></script>
 <script src="/client.js"></script>
 </body>

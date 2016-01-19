@@ -5,10 +5,43 @@
   <link href="custom.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-<div id="question">My Question</div>
+<h3>Enter A New Question</h3>
+<form onsubmit="pollSubmit()">
+  New Question <input name='question' type="text" placeholder="new question"><br>
+  Answer One <input name="answer-a" type="text" placeholder="new question"><br>
+  Answer Two <input name="answer-b" type="text" placeholder="new question"><br>
+  Answer Three <input name="answer-c" type="text" placeholder="new question"><br>
+  Answer Four <input name="answer-d" type="text" placeholder="new question"><br>
+  <input type="submit" value="Submit form">
+</form>
+<div id="question" style="display: none"><p>Question</p></div>
+<div id="answer-a" style="display: none"><p>Answer A</p></div>
+<div id="answer-b" style="display: none"><p>Answer B</p></div>
+<div id="answer-c" style="display: none"><p>Answer C</p></div>
+<div id="answer-d" style="display: none"><p>Answer D</p></div>
+
+
+<form method="get" action="/">
+  <button type="submit">Goto Poll</button>
+</form>
+
+
+
+
 
 <!--JS Scripts-->
 <script src="/jquery.js"></script>
+
+<script>
+  function pollSubmit() {
+    var question = document.getElementById('question p').innerText;
+
+
+    $("a").html($("a").html().replace("Some text", "Other text"));
+  }
+</script>
+
+
 <script src="/socket.io/socket.io.js"></script>
 <!--<script src="/client.js"></script>-->
 </body>

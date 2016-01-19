@@ -15,7 +15,7 @@ app.get('/', function (req, res){
 });
 
 // Create new Poll
-app.get('/poll/new', function(req, res) {
+app.get('/new', function(req, res) {
   res.sendFile(__dirname + '/public/newpoll.html');
 });
 
